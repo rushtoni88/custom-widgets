@@ -1,0 +1,31 @@
+<?php
+
+/**
+ *
+ * @var $block BrandsSlider
+ */
+
+use Develo\Widgets\Block\Widget\BrandsSlider;
+
+$title = $block->getData('title');
+$brandsArray = explode(',', $block->getData('brand_options'));
+
+?>
+
+<div class="develo-widget-brands-slider">
+    <?php if( $title && $title !== '' ): ?>
+        <h3 class="brands-slider-title"><?php echo $title ?></>
+    <?php endif; ?>
+    <div class="brands-slider-container">
+        <?php if ($brandsArray): ?>
+            <?php foreach($brandsArray as $brand): ?>
+            <?php $develoImageSize = getimagesize($block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.png')) ?? ''; ?>
+                <a href="<?php echo $block->getBrandLink($brand) ?>">
+                    <img <?php echo $develoImageSize[3]; ?> loading="lazy" class="brand-logo" src="<?php echo $block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.png') ?>"
+                         alt="<?php echo $brand . ' brand logo' ?>" />
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>
+

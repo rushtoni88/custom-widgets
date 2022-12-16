@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Develo\Widgets\Block\Widget\ShopCollectionFullWidthProducts" id="develo_widgets_shop-collection-full-width-products">
+        <label>Shop Collection - Full Width Products</label>
+        <description>To hide any fields, please leave that field blank</description>
+        <parameters>
+            <parameter name="brand" sort_order="10" visible="true" xsi:type="select">
+                <label>Brand</label>
+                <options>
+                    <option name="weatherbeeta" value="weatherbeeta">
+                        <label>WeatherBeeta</label>
+                    </option>
+                    <option name="dublin" value="dublin">
+                        <label>Dublin</label>
+                    </option>
+                    <option name="collegiate" value="collegiate">
+                        <label>Collegiate</label>
+                    </option>
+                    <option name="saxon" value="saxon">
+                        <label>Saxon</label>
+                    </option>
+                    <option name="weatherbeetadog" value="weatherbeetadog">
+                        <label>WeatherBeeta Dog</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="display_brand_logo" sort_order="20" visible="true" xsi:type="select">
+                <label>Display Brand Logo</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="title" sort_order="30" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+            <parameter name="product_skus" sort_order="40" visible="true" xsi:type="text">
+                <label>Product SKUs</label>
+                <description>Please provide a list of 6 product SKUs, separated by commas</description>
+            </parameter>
+            <parameter name="button_text" sort_order="30" visible="true" xsi:type="text">
+                <label>Button Text</label>
+            </parameter>
+            <parameter name="button_link" sort_order="30" visible="true" xsi:type="text">
+                <label>Button Link</label>
+                <description>Please provide the full link URL eg. "https://weatherbeeta.co.uk/my-page"</description>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget class="Develo\Widgets\Block\Widget\ShopCollectionProductsRight" id="develo_widgets_shop-collection-products-right">
+        <label>Shop Collection - Products Right</label>
+        <description>To hide any fields, please leave that field blank</description>
+        <parameters>
+            <parameter name="brand" sort_order="10" visible="true" xsi:type="select">
+                <label>Brand</label>
+                <options>
+                    <option name="weatherbeeta" value="weatherbeeta">
+                        <label>WeatherBeeta</label>
+                    </option>
+                    <option name="dublin" value="dublin">
+                        <label>Dublin</label>
+                    </option>
+                    <option name="collegiate" value="collegiate">
+                        <label>Collegiate</label>
+                    </option>
+                    <option name="saxon" value="saxon">
+                        <label>Saxon</label>
+                    </option>
+                    <option name="weatherbeetadog" value="weatherbeetadog">
+                        <label>WeatherBeeta Dog</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="title" sort_order="20" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+            <parameter name="content" sort_order="30" visible="true" xsi:type="text">
+                <label>Content</label>
+            </parameter>
+            <parameter name="product_skus" sort_order="40" visible="true" xsi:type="text">
+                <label>Product SKUs</label>
+                <description>Please provide a list of product SKUs, separated by commas</description>
+            </parameter>
+            <parameter name="button_text" sort_order="50" visible="true" xsi:type="text">
+                <label>Button Text</label>
+            </parameter>
+            <parameter name="button_link" sort_order="60" visible="true" xsi:type="text">
+                <label>Button Link</label>
+                <description>Please provide the full link URL eg. "https://weatherbeeta.co.uk/my-page"</description>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget class="Develo\Widgets\Block\Widget\BrandsSlider" id="develo_widgets_brands-slider">
+        <label>Brands Slider</label>
+        <description>Display a slider of brand logos</description>
+        <parameters>
+            <parameter name="title" sort_order="10" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+            <parameter name="brand_options" sort_order="20" xsi:type="multiselect" required="true" visible="true">
+                <label translate="true">Which brand logos to show</label>
+                <options>
+                    <option name="weatherbeeta" value="weatherbeeta">
+                        <label>WeatherBeeta</label>
+                    </option>
+                    <option name="dublin" value="dublin">
+                        <label>Dublin</label>
+                    </option>
+                    <option name="collegiate" value="collegiate">
+                        <label>Collegiate</label>
+                    </option>
+                    <option name="saxon" value="saxon">
+                        <label>Saxon</label>
+                    </option>
+                    <option name="weatherbeetadog" value="weatherbeetadog">
+                        <label>WeatherBeeta Dog</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

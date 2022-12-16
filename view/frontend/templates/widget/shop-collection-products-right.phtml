@@ -1,0 +1,82 @@
+<?php
+
+/**
+ *
+ * @var $block ShopCollectionProductsRight
+ */
+
+use Develo\Widgets\Block\Widget\ShopCollectionProductsRight;
+
+$brand = $block->getData('brand');
+$title = $block->getData('title');
+$content = $block->getData('content');
+$productHelper = $this->helper(Develo\Widgets\Helper\Product::class);
+$productImageHelper = $this->helper(Magento\Catalog\Helper\Image::class);
+$productSkus = $block->getData('product_skus');
+$products = $block->getProductsCollection($productSkus);
+$buttonText = $block->getData('button_text');
+$buttonLink = $block->getData('button_link');
+
+?>
+
+<div class="shop-collection-products-right-container">
+
+    <div class="content-left">
+
+        <div>
+            <?php $develoImageSize = getimagesize($block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.jpg')) ?? ''; ?>
+            <img loading="lazy" <?php echo $develoImageSize[3]; ?> class="brand-logo" src="<?php echo $block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.jpg') ?>"
+                 alt="<?php echo $brand . ' brand logo' ?>" />
+        </div>
+
+        <?php if( $title ): ?>
+            <h3><?php echo $title ?></h3>
+        <?php endif; ?>
+
+        <?php if( $content ): ?>
+            <p><?php echo $content ?></p>
+        <?php endif; ?>
+
+        <?php if( $buttonLink && $buttonText ): ?>
+            <a class="btn" href="<?php echo $buttonLink ?>">
+                <?php echo $buttonText ?>
+            </a>
+        <?php endif; ?>
+
+    </div>
+
+    <div class="content-right">
+
+        <div class="product-image-slider">
+            <?php if( $products ): ?>
+                <?php foreach( $products as $product): ?>
+                    <?php if( $product->isSaleable() ): ?>
+                        <?php
+                        $develoImageUrl = $productImageHelper->init($product, 'product_page_image_small')
+                            ->setImageFile($product->getSmallImage()) // image,small_image,thumbnail
+                            ->resize(600)
+                            ->getUrl();
+                        $develoImageSize = getimagesize($block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.png')) ?? '';
+                        ?>
+                        <a class="item" href="<?php echo $product->getProductUrl() ?>">
+                            <img <?php echo $develoImageSize[3]; ?> loading="lazy" class="product-image" src="<?php echo $develoImageUrl; ?>" alt="<?php echo $product->getName() ?>">
+                        </a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
+    </div>
+
+    <div class="mobile-btn-container">
+
+        <?php if( $buttonLink && $buttonText ): ?>
+            <a class="btn" href="<?php echo $buttonLink ?>">
+                <?php echo $buttonText ?>
+            </a>
+        <?php endif; ?>
+
+    </div>
+
+</div>
+

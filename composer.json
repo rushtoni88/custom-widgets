@@ -1,0 +1,22 @@
+{
+    "name": "develo/module-widgets",
+    "description": "",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Ian Rushton",
+            "email": "ian@develodesign.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Develo\\Widgets\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

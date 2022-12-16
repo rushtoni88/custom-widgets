@@ -1,0 +1,58 @@
+<?php
+
+/**
+ *
+ * @var $block ShopCollectionFullWidthProducts
+ */
+
+use Develo\Widgets\Block\Widget\ShopCollectionFullWidthProducts;
+
+$brand = $block->getData('brand');
+$displayBrandLogo = $block->getData('display_brand_logo');
+$title = $block->getData('title');
+$productSkus = $block->getData('product_skus');
+$products = $block->getProductsCollection($productSkus);
+$productImageHelper = $this->helper(Magento\Catalog\Helper\Image::class);
+$buttonText = $block->getData('button_text');
+$buttonLink = $block->getData('button_link');
+
+?>
+
+<div class="shop-collection-full-width-products">
+    <?php if ($displayBrandLogo): ?>
+        <?php $develoImageSize = getimagesize($block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.jpg')) ?? ''; ?>
+        <img loading="lazy" <?php echo $develoImageSize[3]; ?> class="brand-logo" src="<?php echo $block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.jpg') ?>"
+             alt="<?php echo $brand . ' brand logo' ?>" />
+    <?php endif; ?>
+    <h3 class="shop-collection-title"><?= $title ?></h3>
+    <div class="shop-collection-products">
+        <?php foreach($products as $product): ?>
+            <?php if( $product->isSaleable() ): ?>
+                <?php $colourCount = $block->getAdditionalColourCount($product); ?>
+                <a class="item" href="<?php echo $product->getProductUrl() ?>">
+                    <div class="shop-collection-product-image-wrapper">
+                        <?php
+                        $develoImageUrl = $productImageHelper->init($product, 'product_page_image_small')
+                            ->setImageFile($product->getSmallImage()) // image,small_image,thumbnail
+                            ->resize(600)
+                            ->getUrl();
+                        $develoImageSize = getimagesize($block->getViewFileUrl('images/store-switch/' . $brand . '-store-switch.png')) ?? '';
+                        ?>
+                        <img <?php echo $develoImageSize[3]; ?> loading="lazy" class="shop-collection-product-image" src="<?php echo $develoImageUrl; ?>" alt="<?php echo $product->getName() ?>">
+                    </div>
+                    <div class="shop-collection-product-details-wrapper">
+                        <?php if ($colourCount && $colourCount > 0): ?>
+                            <p class="product-additional-colour-count"><?= '+' . $colourCount . ' ' . ($colourCount == 1 ? __('colour') : __('colours')) ?></p>
+                        <?php endif; ?>
+                        <p class="shop-collection-product-name"><?= $product->getName() ?></p>
+                    </div>
+                </a>
+            <?php endif; ?>
+        <?php endforeach ?>
+    </div>
+
+    <a class="btn btn-outline btn-icon icon-right" href="<?= $buttonLink ?>">
+        <?= $buttonText ?>
+    </a>
+</div>
+
